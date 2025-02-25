@@ -3,7 +3,7 @@ typedef struct {
         char estado;
         char codigo[4], cidade[50];
         int populacao, pontosTuristicos;
-        float area, pib;
+        float area, pib, densidade, pibpercapita;
     } Carta;
     
 void dadosDasCartas(Carta c, int numero) {
@@ -15,7 +15,10 @@ void dadosDasCartas(Carta c, int numero) {
         printf("Area: %.2f km\n", c.area);
         printf("PIB: %.2f bilhoes de reais\n", c.pib);
         printf("Numero de Pontos Turisticos: %d\n", c.pontosTuristicos);
+        printf("Densidade Populacional da Cidade: %.2f hab/km\n", c.densidade);
+        printf("PIB per Capita da Cidade: %.2f reais\n", c.pibpercapita);
 };
+
 int main(){
     Carta carta1, carta2;
     printf("Bem-Vindo ao Super Trunfo de Paises!\n");
@@ -36,7 +39,9 @@ int main(){
     scanf(" %f", &carta1.pib);
     printf("Numero de Pontos Turisticos: ");
     scanf(" %d", &carta1.pontosTuristicos);
-
+    carta1.densidade = carta1.populacao / carta1.area;
+    carta1.pibpercapita = carta1.populacao / carta1.pib;
+    
     printf("Digite as informacoes da Segunda Carta: \n");
 
     printf("Estado (A-H): ");
@@ -54,6 +59,8 @@ int main(){
     scanf(" %f", &carta2.pib);
     printf("Numero de Pontos Turisticos: ");
     scanf(" %d", &carta2.pontosTuristicos);
+    carta2.densidade = carta2.populacao / carta2.area;
+    carta2.pibpercapita = carta2.populacao / carta2.pib;
 
     printf("\nCartas Definidas:\n");
     dadosDasCartas(carta1, 1);
