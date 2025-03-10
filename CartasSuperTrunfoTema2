@@ -144,4 +144,3 @@ int main(){
     comparandoAsCartas(carta1, carta2);
     return 0;
 }
-
